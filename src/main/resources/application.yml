@@ -1,0 +1,12 @@
+server:
+  port: 8092
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5435/users-banking-app
+    username: admin
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

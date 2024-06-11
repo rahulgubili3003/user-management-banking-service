@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: banking-app-users
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: users-banking-app
+    volumes:
+      - banking_db_volumes:/var/lib/postgresql/data
+
+volumes:
+  banking_db_volumes:
