@@ -20,7 +20,7 @@ class SecurityConfig {
     fun authorization(httpSecurity: HttpSecurity): SecurityFilterChain {
         return httpSecurity
             .csrf { csrf -> csrf.disable() }
-            .authorizeHttpRequests { auth -> auth.anyRequest().permitAll() }
+            .authorizeHttpRequests { auth -> auth.requestMatchers("/users/register").permitAll().anyRequest().authenticated() }
             .build()
     }
 }

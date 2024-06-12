@@ -8,6 +8,7 @@ import com.techie.ebanking.users.service.UsersService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -31,5 +32,10 @@ class UsersController(private val service: UsersService) {
             2 -> ResponseEntity.ok(LoginResponse("OK", "Login Successful"))
             else -> ResponseEntity.internalServerError().body(LoginResponse("NG", "An unexpected error occurred"))
         }
+    }
+
+    @GetMapping("/check")
+    fun check(): ResponseEntity<String> {
+        return ResponseEntity.ok("Hello")
     }
 }
