@@ -29,7 +29,7 @@ class SecurityConfig(private val repository: UsersRepository) {
     fun authorization(httpSecurity: HttpSecurity): SecurityFilterChain {
         return httpSecurity
             .csrf { csrf -> csrf.disable() }
-            .authorizeHttpRequests { auth -> auth.requestMatchers("/users/register").permitAll().anyRequest().authenticated() }
+            .authorizeHttpRequests { auth -> auth.requestMatchers("/users/register", "/users/login").permitAll().anyRequest().authenticated() }
             .build()
     }
 

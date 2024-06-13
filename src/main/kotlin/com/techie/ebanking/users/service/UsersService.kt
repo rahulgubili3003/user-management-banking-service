@@ -3,6 +3,7 @@ package com.techie.ebanking.users.service
 import com.techie.ebanking.users.dto.request.UserLoginRequest
 import com.techie.ebanking.users.dto.request.UserRegisterRequest
 import com.techie.ebanking.users.exception.DuplicateUsernameException
+import com.techie.ebanking.users.exception.UsernameOrPasswordInvalidException
 import com.techie.ebanking.users.repository.UsersRepository
 import com.techie.ebanking.users.util.jwt.JwtUtil
 import com.techie.ebanking.users.util.mappers.DtoToEntityMapper
@@ -54,7 +55,7 @@ class UsersService(
                 )
             )
         } catch (e: AuthenticationException) {
-            throw RuntimeException("Authentication Failed")
+            throw UsernameOrPasswordInvalidException("Authentication Failed")
         }
         return jwtUtil.generateToken(username)
     }
