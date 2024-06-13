@@ -25,13 +25,8 @@ class UsersController(private val service: UsersService) {
 
     @PostMapping("/login")
     fun login(@Valid @RequestBody loginRequest: UserLoginRequest): ResponseEntity<LoginResponse> {
-        val isLoggedIn = service.login(loginRequest)
-        return when(isLoggedIn) {
-            0 -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(LoginResponse("NG", "Username not found in DB"))
-            1 -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(LoginResponse("NG", "Entered Password is Invalid"))
-            2 -> ResponseEntity.ok(LoginResponse("OK", "Login Successful"))
-            else -> ResponseEntity.internalServerError().body(LoginResponse("NG", "An unexpected error occurred"))
-        }
+        val token = service.login(loginRequest)
+        return ResponseEntity.ok(LoginResponse("OK", "Login Successful", token))
     }
 
     @GetMapping("/check")
