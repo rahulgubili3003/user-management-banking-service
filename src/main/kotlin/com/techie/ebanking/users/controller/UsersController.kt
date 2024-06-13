@@ -6,7 +6,6 @@ import com.techie.ebanking.users.dto.response.LoginResponse
 import com.techie.ebanking.users.dto.response.OkResponse
 import com.techie.ebanking.users.service.UsersService
 import jakarta.validation.Valid
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
