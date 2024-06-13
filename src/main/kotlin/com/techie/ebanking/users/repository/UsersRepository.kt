@@ -8,5 +8,5 @@ import java.util.Optional
 @Repository
 interface UsersRepository: JpaRepository<Users, String> {
     fun existsByName(name: String): Boolean
-    fun findByName(name: String): Users?
+    fun findByName(name: String?): Users?
 }
